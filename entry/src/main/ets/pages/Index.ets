@@ -1,6 +1,8 @@
 import {checkIn} from '../pages/checkIn'
 import {consumption} from '../pages/consumption'
 import {factoryStatus} from '../pages/factoryStatus'
+
+
 @Entry
 @Component
 struct Index {
