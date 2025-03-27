@@ -1,5 +1,5 @@
 import {checkIn} from '../pages/checkIn'
-import {consumption} from '../pages/consumption'
+import {facConsumption} from './facConsumption'
 import {factoryStatus} from '../pages/factoryStatus'
 @Entry
 @Component
@@ -12,7 +12,7 @@ struct Index {
           checkIn()
         }.tabBar('工人打卡')
         TabContent(){
-          consumption()
+          facConsumption()
         }.tabBar('工厂能耗')
         TabContent(){
           factoryStatus()
