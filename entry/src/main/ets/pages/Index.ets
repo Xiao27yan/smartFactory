@@ -12,7 +12,7 @@ struct Index {
       Tabs({barPosition:BarPosition.End}){
         TabContent(){
           checkIn()
-        }.tabBar('工人打卡')
+        }.tabBar('工人考勤状况')
         TabContent(){
           facConsumption()
         }.tabBar('工厂能耗')

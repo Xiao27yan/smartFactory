@@ -7,10 +7,15 @@ export struct checkIn{
   @State searchValue:string = ''
   @StorageLink("allUserListData") allUserListData:Array<User> = []
   getUserData(){
-    const dataList = [new User('姓名','状态','部门'),
+    const dataList = [
+      new User('姓名', '状态', '部门'),
       new User('Alice', '已打卡', '工程师'),
       new User('Bob', '未打卡', '市场监督'),
-      new User('Charlie', '已打卡', '销售')]
+      new User('Charlie', '已打卡', '销售'),
+      new User('David', '已打卡', '客服'),
+      new User('Eve', '未打卡', '运营'),
+      new User('Frank', '已打卡', '设计')
+    ];
     this.allUserListData = dataList
   }
   aboutToAppear(): void {
@@ -53,7 +58,7 @@ export struct checkIn{
         .onDidDelete(()=>{
           this.allUserListData = this.allUserListData
         })
-        .width('90%')
+        .width('100%')
         .height(40)
         .backgroundColor('#F5F5F5')
         .placeholderColor(Color.Grey)
@@ -77,19 +82,20 @@ export struct checkIn{
             }
             .width("100%")
             .height("50")
-            .backgroundColor(Color.Orange)
+            // .backgroundColor(Color.Orange)
+            .border({style:BorderStyle.Dashed,width:1,color:Color.Black})
             .justifyContent(FlexAlign.Center)
             .borderRadius('10')
           }
         })
       }
-      .height('40%')
+      .height('100%')
       .width("100%")
       .friction(0.6)
       .scrollBar(BarState.Off)
       .margin({top:30})
       Flex({justifyContent: FlexAlign.SpaceAround}){
-        Button('全部').onClick(()=>{
+        Button('全部人').onClick(()=>{
           this.getUserData()
         })
         Button('已打卡').onClick(()=>{

@@ -28,6 +28,6 @@ export default struct Echarts {
 
     }
     .width(this.eWidth)
-    .height(this.eHeight)
+    .height('40%')
   }
 }

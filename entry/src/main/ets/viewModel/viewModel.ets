@@ -6,8 +6,8 @@ export interface EChartsOption {
   title?: EChartsTitle;
   tooltip?: EChartsTooltip;
   legend?: EChartsLegend;
-  xAxis: EChartsXAxis;
-  yAxis: EChartsYAxis;
+  xAxis?: EChartsXAxis;
+  yAxis?: EChartsYAxis;
   series: EChartsSeries[];
 }
 
@@ -23,12 +23,17 @@ export interface EChartsTitle {
   left?:string
 }
 
+export  interface itemStyle{
+  color?:string
+}
+
 export interface EChartsTooltip {
   trigger?:string;
   formatter?:string
 }
 
 export interface EChartsLegend {
+  orient?:string
   show?:boolean
   data?: string[];
   left?:string
@@ -83,11 +88,34 @@ export interface keyValue{
   name?:string
 }
 
+export interface Label{
+  position?:string;
+  formatter?:string
+  color?:string
+  fontSize?:number
+}
+
+export interface link{
+  source?:string,
+  target?:string,
+  value?:number
+}
+
+export interface keyValue2{
+  name?:string,
+  itemStyle?:itemStyle
+}
+
 
 export interface EChartsSeries {
   name?: string;
   type?: string;
-  data?: number[]|keyValue[];
+  data?: number[]|keyValue[]|keyValue2[];
   radius?:number[]|string[];
   center?:string[];
+  label?:Label,
+  left?:string,
+  right?:string
+  nodeAlign?:string
+  links?:link[]
 }
