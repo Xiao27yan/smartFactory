@@ -1,26 +1,50 @@
-import {checkIn} from '../pages/checkIn'
-import {facConsumption} from './facConsumption'
-import {factoryStatus} from '../pages/factoryStatus'
-
+import { router } from '@kit.ArkUI'
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
-  @State selectedIndex:number = 0
+  private swiperController:SwiperController = new SwiperController()
   build() {
-      Tabs({barPosition:BarPosition.End}){
-        TabContent(){
-          checkIn()
-        }.tabBar('工人考勤状况')
-        TabContent(){
-          facConsumption()
-        }.tabBar('工厂能耗')
-        TabContent(){
-          factoryStatus()
-        }.tabBar('工厂产量')
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Column() {
+        Swiper(this.swiperController) {
+          Image($r('app.media.startIcon')).width('100%').height('100%')
+          Image($r('app.media.download'))
+        }
+        .indicator(
+          Indicator.dot()// 圆形导航点
+            .selectedColor(Color.Black)// 选中颜色
+            .selectedItemWidth(10)// 选中宽度
+            .selectedItemHeight(5)// 选中高度
+            .itemWidth(5)// 默认宽度
+            .itemHeight(5) // 默认高度
+        )
+
+        .height('50%')
+        .loop(true)
+        .autoPlay(true)
+        .interval(2000)
+        .width('100%')
+
+        Row() {
+          Button('员工考勤').width(120)
+            .onClick(()=>{
+              router.pushUrl({url:'pages/checkIn'})
+            })
+          Button('流水线监控').width(120)
+            .onClick(()=>{
+              router.pushUrl({url:'pages/facConsumption'})
+            })
+        }
+        .margin({top:100})
+        .width('100%')
+        .justifyContent(FlexAlign.Center)
       }
-    .height('100%')
+
+      .width('95%')
+      .height('100%')
+    }
     .width('100%')
+    .height('100%')
   }
 }

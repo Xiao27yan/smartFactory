@@ -1,6 +1,6 @@
 import { User } from '../model/User'
 import { ItemRestriction, SegmentButton, SegmentButtonOptions, SegmentButtonTextItem } from '@kit.ArkUI'
-
+@Entry
 @Component
 export struct checkIn{
   @State changeValue: string = ''

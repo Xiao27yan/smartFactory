@@ -1,5 +1,9 @@
 {
   "src": [
-    "pages/Index"
+    "pages/Index",
+    "pages/checkIn",
+    "pages/facConsumption",
+    "pages/factoryStatus",
+    "pages/main"
   ]
 }

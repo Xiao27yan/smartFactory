@@ -1,75 +1,58 @@
-import Echarts from '../components/echarts'
-import { EChartsOption } from '../viewModel/viewModel'
-
+// xxx.ets
 @Entry
 @Component
-struct Index {
-  //图表实例
-  myEchart: Echarts | null = null
-  /*
-   * 图表配置
-   */
-  option: EChartsOption = {
-    //标题
-    title: {
-      text: '基础柱状图'
-    },
-    //图例
-    legend: {
-      data: ['访问量']
-    },
-    //x轴配置
-    xAxis: {
-      type: 'category',
-      data: []
-    },
-    //y轴配置
-    yAxis: {
-      type: 'value'
-    },
-    //数据配置
-    series: [
-      {
-        data: [],
-        type: 'bar',//柱状图
-        name: '访问量'
-      }
-    ]
-  };
-
-  aboutToAppear(): void {
-    this.getData()
-  }
-
-  //接口请求获取数据
-  getData() {
-    //模拟接口请求
-    setTimeout(() => {
-      //设置x轴数据
-      this.option.xAxis.data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      //设置y轴数据
-      this.option.series[0].data = [120, 200, 150, 80, 70, 110, 130]
-      //调用render重新渲染
-      this.myEchart?.render(this.option)
-    }, 2000)
-  }
-
-  // 组件实例
-  chart?: Echarts;
-
+struct FlexExample1 {
   build() {
     Column() {
-      Echarts({
-        eHeight: 300,
-        //回调
-        renderCallBack: (e: Echarts) => {
-          this.myEchart = e
-          //初次渲染组件，接口获取数据是异步此时this.option可能还没有新数据
-          this.myEchart.render(this.option)
+      Column({ space: 5 }) {
+        Text('direction:Row').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Flex({ direction: FlexDirection.Row }) {
+          Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
+          Text('2').width('20%').height(50).backgroundColor(0xD2B48C)
+          Text('3').width('20%').height(50).backgroundColor(0xF5DEB3)
+          Text('4').width('20%').height(50).backgroundColor(0xD2B48C)
         }
-      })
-    }
-    .width('100%')
-    .height('100%')
+        .height(70)
+        .width('90%')
+        .padding(10)
+        .backgroundColor(0xAFEEEE)
+
+        Text('direction:RowReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Flex({ direction: FlexDirection.RowReverse }) {
+          Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
+          Text('2').width('20%').height(50).backgroundColor(0xD2B48C)
+          Text('3').width('20%').height(50).backgroundColor(0xF5DEB3)
+          Text('4').width('20%').height(50).backgroundColor(0xD2B48C)
+        }
+        .height(70)
+        .width('90%')
+        .padding(10)
+        .backgroundColor(0xAFEEEE)
+
+        Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Flex({ direction: FlexDirection.Column }) {
+          Text('1').width('100%').height(40).backgroundColor(0xF5DEB3)
+          Text('2').width('100%').height(40).backgroundColor(0xD2B48C)
+          Text('3').width('100%').height(40).backgroundColor(0xF5DEB3)
+          Text('4').width('100%').height(40).backgroundColor(0xD2B48C)
+        }
+        .height(160)
+        .width('90%')
+        .padding(10)
+        .backgroundColor(0xAFEEEE)
+
+        Text('direction:ColumnReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Flex({ direction: FlexDirection.ColumnReverse }) {
+          Text('1').width('100%').height(40).backgroundColor(0xF5DEB3)
+          Text('2').width('100%').height(40).backgroundColor(0xD2B48C)
+          Text('3').width('100%').height(40).backgroundColor(0xF5DEB3)
+          Text('4').width('100%').height(40).backgroundColor(0xD2B48C)
+        }
+        .height(160)
+        .width('90%')
+        .padding(10)
+        .backgroundColor(0xAFEEEE)
+      }.width('100%').margin({ top: 5 })
+    }.width('100%')
   }
 }
